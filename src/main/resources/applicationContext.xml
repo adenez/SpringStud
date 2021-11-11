@@ -14,7 +14,8 @@
     <bean id="rockMusicBean"
           class="ru.aden.springcourse.models.impls.RockMusic"/>
     <bean id="musicPlayer"
-          class="ru.aden.springcourse.models.MusicPlayer">
+          class="ru.aden.springcourse.models.MusicPlayer"
+          scope="prototype">
         <property name="music" ref="rockMusicBean"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
