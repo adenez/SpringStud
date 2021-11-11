@@ -7,8 +7,23 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean" class="ru.aden.springcourse.TestBean">
-        <constructor-arg value="Andrew"/>
+    <context:property-placeholder location="musicPlayer.properties"/>
+
+    <bean id="classicalMusicBean"
+          class="ru.aden.springcourse.models.impls.ClassicalMusic"
+            init-method="doInit"
+            destroy-method="doDestroy"
+            factory-method="getClassicalMusic"/>
+
+    <bean id="rockMusicBean"
+          class="ru.aden.springcourse.models.impls.RockMusic"/>
+
+    <bean id="musicPlayer"
+          class="ru.aden.springcourse.models.MusicPlayer"
+          scope="singleton">
+        <property name="music" ref="classicalMusicBean"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
