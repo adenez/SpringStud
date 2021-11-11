@@ -10,13 +10,17 @@
     <context:property-placeholder location="musicPlayer.properties"/>
 
     <bean id="classicalMusicBean"
-          class="ru.aden.springcourse.models.impls.ClassicalMusic"/>
+          class="ru.aden.springcourse.models.impls.ClassicalMusic"
+            init-method="doInit"
+            destroy-method="doDestroy"/>
+
     <bean id="rockMusicBean"
           class="ru.aden.springcourse.models.impls.RockMusic"/>
+
     <bean id="musicPlayer"
           class="ru.aden.springcourse.models.MusicPlayer"
-          scope="prototype">
-        <property name="music" ref="rockMusicBean"/>
+          scope="singleton">
+        <property name="music" ref="classicalMusicBean"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
