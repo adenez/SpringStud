@@ -12,7 +12,8 @@
     <bean id="classicalMusicBean"
           class="ru.aden.springcourse.models.impls.ClassicalMusic"
             init-method="doInit"
-            destroy-method="doDestroy"/>
+            destroy-method="doDestroy"
+            factory-method="getClassicalMusic"/>
 
     <bean id="rockMusicBean"
           class="ru.aden.springcourse.models.impls.RockMusic"/>
