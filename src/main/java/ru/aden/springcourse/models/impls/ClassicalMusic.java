@@ -1,14 +1,11 @@
 package ru.aden.springcourse.models.impls;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import ru.aden.springcourse.models.Music;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
-@Scope("singleton")
+
 public class ClassicalMusic implements Music {
 
     @Override

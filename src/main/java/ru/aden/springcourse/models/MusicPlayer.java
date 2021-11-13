@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import ru.aden.springcourse.models.impls.ClassicalMusic;
 import ru.aden.springcourse.models.impls.RockMusic;
 
-@Component
+
 public class MusicPlayer {
 
     @Value("${musicPlayer.name}")
@@ -19,9 +19,8 @@ public class MusicPlayer {
     private Music music1;
     private Music music2;
 
-    @Autowired
-    public MusicPlayer(@Qualifier("classicalMusic") Music music1,
-                       @Qualifier("rockMusic") Music music2) {
+    public MusicPlayer(Music music1,
+                       Music music2) {
         this.music1 = music1;
         this.music2 = music2;
     }
