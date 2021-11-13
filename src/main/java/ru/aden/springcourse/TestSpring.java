@@ -1,15 +1,28 @@
 package ru.aden.springcourse;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.aden.springcourse.models.Computer;
+import ru.aden.springcourse.models.Music;
+import ru.aden.springcourse.models.MusicPlayer;
+import ru.aden.springcourse.models.config.SpringConfig;
+import ru.aden.springcourse.models.impls.ClassicalMusic;
+import ru.aden.springcourse.models.impls.RockMusic;
 
 public class TestSpring {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        TestBean testBean = applicationContext.getBean("testBean", TestBean.class);
-        System.out.println(testBean.getName());
+        MusicPlayer musicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
+        System.out.println(musicPlayer.getName());
+        System.out.println(musicPlayer.getVolume());
 
-        applicationContext.close();
+        ClassicalMusic classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
+        ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
+
+        System.out.println(classicalMusic1 == classicalMusic2);
+
+
+        context.close();
     }
 }
